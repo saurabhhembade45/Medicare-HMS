@@ -125,7 +125,7 @@ export const getDoctors = async (req, res) => {
   }
 };
 
-// update doctor details
+// update doctor details, only doctor himself can update his details, email and password can also be updated here
 export async function updateDoctor(req, res) {
   try {
     const { id } = req.params;
