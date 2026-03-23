@@ -5,15 +5,17 @@ import { connectDB } from './config/db.js'
 import dotenv from "dotenv";
 dotenv.config();
 
-import { createProxyMiddleware } from 'http-proxy-middleware'       
+import { createProxyMiddleware } from 'http-proxy-middleware'     
+import doctorRouter from './routes/doctorRouter.js';  
 const app = express()
+app.use(express.json());
 const port = 4000;
 
 // middlerware
 app.use(cors())
 app.use(clerkMiddleware())
 app.use(express.urlencoded({limit: "20mb", extended: true})); 
-
+app.use("/api/doctors", doctorRouter); 
 
 //DB
 connectDB();
