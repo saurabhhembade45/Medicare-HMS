@@ -7,6 +7,7 @@ dotenv.config();
 
 import { createProxyMiddleware } from 'http-proxy-middleware'     
 import doctorRouter from './routes/doctorRouter.js';  
+import serviceRouter from './routes/serviceRoutes.js'; 
 const app = express()
 app.use(express.json());
 const port = 4000;
@@ -16,6 +17,7 @@ app.use(cors())
 app.use(clerkMiddleware())
 app.use(express.urlencoded({limit: "20mb", extended: true})); 
 app.use("/api/doctors", doctorRouter); 
+app.use("/api/services", serviceRouter);
 
 //DB
 connectDB();
